@@ -4,8 +4,8 @@ pipeline {
         stage('Install and run httpd') {
             steps {
                 sh ''' 
-                    cp * /var/www/html/
                     sudo yum install httpd -y
+                    cp * /var/www/html/
                     sudo systemctl start httpd
                 '''
             }
