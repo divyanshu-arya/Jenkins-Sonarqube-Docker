@@ -4,10 +4,14 @@ pipeline {
     stages {
         stage('Install Apache2 ') {
             steps {
-                sh ''' sudo yum install httpd -y
+
+                node('master') {
+                  sh ''' 
+                  sudo yum install httpd -y
                   cp * /var/www/html/
                   systemctl start httpd
                 '''
+                }
             }
         }
     }
