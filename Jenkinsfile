@@ -1,18 +1,16 @@
 pipeline {
-    agent any
-
-    stages {
-        stage('Install Apache2 ') {
-            steps {
-
-                node('master') {
-                  sh ''' 
-                  sudo yum install httpd -y
-                  cp * /var/www/html/
-                  systemctl start httpd
-                '''
+    stage('Run on Master') {
+            agent {
+                node {
+                    label 'master'
                 }
             }
+            steps {
+                sh ''' 
+                  sudo yum install httpd -y
+                  cp * /var/www/html/
+                  sudo systemctl start httpd
+                '''
+            }
         }
-    }
 }
