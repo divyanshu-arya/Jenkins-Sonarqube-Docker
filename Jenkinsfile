@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        node {
-            label 'master'
-        }
-    }
+    agent { node }
     stages {
         stage('Install and run httpd') {
             steps {
