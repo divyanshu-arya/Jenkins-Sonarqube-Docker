@@ -2,11 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone') {
-            steps {
-                SCM checkout
-            }
-        }
         stage('Install Apache2 ') {
             steps {
                 sh ''' sudo yum install httpd -y
