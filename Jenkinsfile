@@ -1,5 +1,6 @@
 pipeline {
-    stage('Run on Master') {
+    stages{
+        stage('Run on Master') {
             agent {
                 node {
                     label 'master'
@@ -13,4 +14,5 @@ pipeline {
                 '''
             }
         }
+    }
 }
