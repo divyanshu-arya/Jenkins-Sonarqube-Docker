@@ -1,18 +1,17 @@
 pipeline {
     agent any
-    stages{
+    stages {
         stage('Run on Master') {
-            agent {
-                node {
-                    label 'master'
-                }
-            }
+            agent none
             steps {
-                sh ''' 
-                  sudo yum install httpd -y
-                  cp * /var/www/html/
-                  sudo systemctl start httpd
-                '''
+                node('master') {
+                    // Now we are on the master node
+                    sh ''' 
+                        sudo yum install httpd -y
+                        cp * /var/www/html/
+                        sudo systemctl start httpd
+                    '''
+                }
             }
         }
     }
