@@ -4,10 +4,10 @@ pipeline {
         stage('Install and run httpd') {
             steps {
                 sh ''' 
-                sudo apt-get update
-                sudo apt-get install apache2 -y
+                sudo yum update
+                sudo yum install httpd -y
                 cp * /var/www/html/
-                sudo systemctl start apache2
+                sudo systemctl start httpd
                 '''
             }
         }
